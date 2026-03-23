@@ -21,6 +21,7 @@ struct TabControl<Tab: Hashable>: View {
                 }
             }
             .padding(.horizontal, 16)
+            .padding(.bottom, 8)
         }
     }
 }

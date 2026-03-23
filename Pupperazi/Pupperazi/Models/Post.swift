@@ -3,7 +3,7 @@ import SwiftUI
 /// A single post in the feed.
 struct Post: Identifiable, Hashable {
     let id: String
-    let imageName: String         // Asset catalogue image or system placeholder
+    let imageName: String
     let headline: String
     let breed: String
     let location: String
@@ -13,6 +13,14 @@ struct Post: Identifiable, Hashable {
     var isBooped: Bool
     var commentCount: Int
     var treats: [Treat]
+
+    /// Loads the image from the bundle's doggo-JPEGS resource folder.
+    var image: UIImage? {
+        guard let path = Bundle.main.path(forResource: imageName, ofType: "jpeg") else {
+            return nil
+        }
+        return UIImage(contentsOfFile: path)
+    }
 
     static func == (lhs: Post, rhs: Post) -> Bool { lhs.id == rhs.id }
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
@@ -24,7 +32,7 @@ extension Post {
     static let samples: [Post] = [
         Post(
             id: "1",
-            imageName: "sample_dog_1",
+            imageName: "01G6DD7K1HN9QBR2Z426ZQ9H7H-hi-res-branded-",
             headline: "Good boy poses with a devastating smolder",
             breed: "Labrador",
             location: "London, UK",
@@ -37,7 +45,7 @@ extension Post {
         ),
         Post(
             id: "2",
-            imageName: "sample_dog_2",
+            imageName: "01G6J54P47H15D8HTFB75PP6ER-hi-res-branded-",
             headline: "Late night zoomies in the park",
             breed: "Corgi",
             location: "Tokyo, JP",
@@ -53,7 +61,7 @@ extension Post {
         ),
         Post(
             id: "3",
-            imageName: "sample_dog_3",
+            imageName: "01G74NFNG10SBQ0427KCTNW7M6-hi-res-branded-",
             headline: "Sunday snooze on the sofa",
             breed: "Pug",
             location: "NYC, US",
@@ -66,7 +74,7 @@ extension Post {
         ),
         Post(
             id: "4",
-            imageName: "sample_dog_4",
+            imageName: "01G84BEMEVRBCSN7W569RW1PCS-hi-res-branded-",
             headline: "First snow day and absolutely losing it",
             breed: "Husky",
             location: "Oslo, NO",

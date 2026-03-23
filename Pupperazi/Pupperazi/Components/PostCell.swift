@@ -4,7 +4,7 @@ import SwiftUI
 ///
 /// Appearance is driven entirely by an `ArticleStyle` + `StylePalette` pair,
 /// making it easy to add new visual treatments.
-struct PostCell: View {
+struct PostCell<ImageOverlay: View>: View {
     let image: UIImage?
     let headline: String
     let breed: String
@@ -13,22 +13,34 @@ struct PostCell: View {
     let palette: StylePalette
     var forceSquare: Bool = true
     var showRoundedCorners: Bool = true
+    var imageOverlay: ImageOverlay
 
     var body: some View {
         VStack(spacing: 0) {
             // Image + tag overlays — fills remaining space above headline
             ZStack(alignment: .top) {
-                if let image {
-                    GeometryReader { geo in
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geo.size.width, height: geo.size.height)
-                            .clipped()
+                Group {
+                    if let image {
+                        GeometryReader { geo in
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: geo.size.width, height: geo.size.height)
+                                .clipped()
+                        }
+                    } else {
+                        Color.gray.opacity(2)
                     }
-                } else {
-                    Color.gray.opacity(0.2)
                 }
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(AppColor.Border.superStrong, lineWidth: 2)
+                }
+                .overlay(alignment: .bottomLeading) {
+                    imageOverlay
+                }
+                .padding(8)
 
                 // Tag overlays
                 HStack {
@@ -46,7 +58,7 @@ struct PostCell: View {
                         foreground: palette.chipForeground
                     )
                 }
-                .padding(10)
+                .padding(16)
             }
 
             // Headline band
@@ -77,6 +89,31 @@ struct PostCell: View {
             RoundedRectangle(cornerRadius: showRoundedCorners ? style.cornerRadius : 0)
                 .fill(palette.background)
         )
+    }
+}
+
+// MARK: - Convenience init (no image overlay)
+
+extension PostCell where ImageOverlay == EmptyView {
+    init(
+        image: UIImage?,
+        headline: String,
+        breed: String,
+        location: String,
+        style: ArticleStyle,
+        palette: StylePalette,
+        forceSquare: Bool = true,
+        showRoundedCorners: Bool = true
+    ) {
+        self.image = image
+        self.headline = headline
+        self.breed = breed
+        self.location = location
+        self.style = style
+        self.palette = palette
+        self.forceSquare = forceSquare
+        self.showRoundedCorners = showRoundedCorners
+        self.imageOverlay = EmptyView()
     }
 }
 

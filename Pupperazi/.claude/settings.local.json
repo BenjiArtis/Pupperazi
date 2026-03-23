@@ -7,7 +7,8 @@
       "Bash(xcodebuild -scheme Pupperazi -destination 'platform=iOS Simulator,name=iPhone 16 Pro' build)",
       "Bash(xcodebuild -scheme Pupperazi -project /Users/benartis/Documents/Personal/Apps/Pupperazi/Pupperazi/Pupperazi.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build)",
       "Bash(find /Users/benartis/Documents/Personal/Apps/Pupperazi -name *.xcodeproj -o -name *.xcworkspace)",
-      "Bash(xcodebuild -scheme Pupperazi -project /Users/benartis/Documents/Personal/Apps/Pupperazi/Pupperazi/Pupperazi/Pupperazi.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build)"
+      "Bash(xcodebuild -scheme Pupperazi -project /Users/benartis/Documents/Personal/Apps/Pupperazi/Pupperazi/Pupperazi/Pupperazi.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build)",
+      "Bash(xcodebuild -scheme Pupperazi -destination 'platform=iOS Simulator,name=iPhone 17 Pro' build)"
     ]
   }
 }

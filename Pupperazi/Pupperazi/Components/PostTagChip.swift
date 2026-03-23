@@ -22,6 +22,10 @@ struct PostTagChip: View {
             Capsule()
                 .fill(chipBackground)
         )
+        .overlay {
+            Capsule()
+                .stroke(AppColor.Border.superStrong, lineWidth: 2)
+        }
     }
 }
 
