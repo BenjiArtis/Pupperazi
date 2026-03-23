@@ -7,6 +7,7 @@ struct Post: Identifiable, Hashable {
     let headline: String
     let breed: String
     let location: String
+    let author: String
     let style: ArticleStyle
     let palette: StylePalette
     var boopCount: Int
@@ -36,6 +37,7 @@ extension Post {
             headline: "Good boy poses with a devastating smolder",
             breed: "Labrador",
             location: "London, UK",
+            author: "@benjiartis",
             style: .tabloid,
             palette: ArticleStyle.tabloid.palettes[0],
             boopCount: 42,
@@ -49,6 +51,7 @@ extension Post {
             headline: "Late night zoomies in the park",
             breed: "Corgi",
             location: "Tokyo, JP",
+            author: "@dogspotter",
             style: .poster,
             palette: ArticleStyle.poster.palettes[0],
             boopCount: 128,
@@ -65,6 +68,7 @@ extension Post {
             headline: "Sunday snooze on the sofa",
             breed: "Pug",
             location: "NYC, US",
+            author: "@puglife",
             style: .tabloid,
             palette: ArticleStyle.tabloid.palettes[2],
             boopCount: 7,
@@ -78,6 +82,7 @@ extension Post {
             headline: "First snow day and absolutely losing it",
             breed: "Husky",
             location: "Oslo, NO",
+            author: "@snowpaws",
             style: .tabloid,
             palette: ArticleStyle.tabloid.palettes[3],
             boopCount: 256,

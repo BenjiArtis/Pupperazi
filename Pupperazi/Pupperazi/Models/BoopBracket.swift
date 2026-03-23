@@ -30,8 +30,14 @@ struct BoopBracket: Identifiable {
     let roundName: String
     var matchups: [BracketMatchup]
 
-    /// Total pages: 1 cover + N matchups.
-    var pageCount: Int { 1 + matchups.count }
+    /// Total pages: 1 cover + N matchups + 1 results.
+    var pageCount: Int { 1 + matchups.count + 1 }
+
+    /// Whether every matchup has been voted on.
+    var allVoted: Bool { matchups.allSatisfy(\.hasVoted) }
+
+    /// Index of the results page.
+    var resultsPageIndex: Int { 1 + matchups.count }
 }
 
 // MARK: - Sample Data

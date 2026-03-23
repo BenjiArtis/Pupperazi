@@ -120,6 +120,7 @@ struct FeedView: View {
                 headline: posts[index].headline,
                 breed: posts[index].breed,
                 location: posts[index].location,
+                author: posts[index].author,
                 style: posts[index].style,
                 palette: posts[index].palette,
                 forceSquare: false,
@@ -149,6 +150,8 @@ struct FeedView: View {
                 roundName: bracket.roundName,
                 matchupCount: bracket.matchups.count
             )
+        } else if pageIndex == bracket.resultsPageIndex {
+            BracketResultsPage(bracket: bracket)
         } else {
             let matchupIndex = pageIndex - 1
             BracketMatchupView(
@@ -167,6 +170,9 @@ struct FeedView: View {
                 BracketCoverBar {
                     bracketPageIndex = 1
                 }
+            } else if bracketPageIndex == bracket.resultsPageIndex {
+                // Results page — countdown to next round
+                BracketNextRoundBar()
             } else if let matchup = currentMatchup {
                 // Matchup page — vote buttons
                 BracketInteractionBar(

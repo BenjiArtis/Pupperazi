@@ -1,0 +1,143 @@
+{
+  "conversation": [
+    {
+      "id": "welcome",
+      "pawrezMessages": [
+        "So. You want to be a Pupperazi?",
+        "I've seen a lot of hopefuls walk through that door. Most of them couldn't spot a Dachshund from a Corgi.",
+        "Let's see if you're different. What do I call you? And make it good."
+      ],
+      "action": {
+        "type": "textInput",
+        "placeholder": "Type a username...",
+        "inputFormat": "username"
+      },
+      "userResponse": {
+        "type": "usernameChip",
+        "valueFrom": "input"
+      }
+    },
+    {
+      "id": "phoneNumber",
+      "pawrezMessages": [
+        "Hm... That'll do. I guess.",
+        "Your number.",
+        "Yes, I'm aware I'm already texting you. Don't make it weird."
+      ],
+      "action": {
+        "type": "textInput",
+        "placeholder": "Your phone number...",
+        "inputFormat": "phone",
+        "keyboardType": "phonePad"
+      },
+      "userResponse": {
+        "type": "chip",
+        "valueFrom": "input"
+      }
+    },
+    {
+      "id": "verification",
+      "pawrezMessages": [
+        "Did you get the code I sent you?"
+      ],
+      "action": {
+        "type": "textInput",
+        "placeholder": "Enter the code...",
+        "inputFormat": "code",
+        "keyboardType": "numberPad"
+      },
+      "userResponse": {
+        "type": "chip",
+        "valueFrom": "input"
+      }
+    },
+    {
+      "id": "cameraPermission",
+      "pawrezMessages": [
+        "Okay now camera access, obviously.",
+        "What are you going to pap dogs with, your personality?"
+      ],
+      "action": {
+        "type": "permission",
+        "permissionType": "camera"
+      },
+      "userResponse": {
+        "type": "chip",
+        "valueFrom": "static",
+        "value": "Okay, done."
+      },
+      "onDenied": {
+        "pawrezMessages": [
+          "Really? No camera?",
+          "You do know this is a photography app, right?",
+          "Go to Settings and sort yourself out. I'll wait."
+        ],
+        "action": {
+          "type": "retryPermission",
+          "permissionType": "camera"
+        }
+      }
+    },
+    {
+      "id": "locationPermission",
+      "pawrezMessages": [
+        "And now your location.",
+        "I need proof you're actually outside and not photographing your own dog on the sofa."
+      ],
+      "action": {
+        "type": "permission",
+        "permissionType": "location"
+      },
+      "userResponse": {
+        "type": "chip",
+        "valueFrom": "static",
+        "value": "Fine, there you go."
+      },
+      "onDenied": {
+        "pawrezMessages": [
+          "No location? Suit yourself.",
+          "Just don't come crying to me when nobody knows where your pap was taken."
+        ],
+        "action": {
+          "type": "skip"
+        }
+      }
+    },
+    {
+      "id": "profilePhoto",
+      "pawrezMessages": [
+        "Now. Your press pass photo.",
+        "Let's keep it classy now..."
+      ],
+      "action": {
+        "type": "photoPicker"
+      },
+      "userResponse": {
+        "type": "image",
+        "valueFrom": "photo"
+      },
+      "onDenied": {
+        "pawrezMessages": [
+          "No photo access either?",
+          "You're really making this difficult.",
+          "Fine. You can add one later from your profile. If you ever figure out how phones work."
+        ],
+        "action": {
+          "type": "skip"
+        }
+      }
+    },
+    {
+      "id": "complete",
+      "pawrezMessages": [
+        "...Fine. You'll do.",
+        "Now get papping!",
+        "TTYN <3"
+      ],
+      "action": {
+        "type": "complete"
+      },
+      "userResponse": null
+    }
+  ]
+}

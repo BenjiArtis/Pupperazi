@@ -1,27 +1,5 @@
 import SwiftUI
 
-// MARK: - Onboarding
-
-struct OnboardingView: View {
-    var onComplete: () -> Void
-
-    var body: some View {
-        ZStack {
-            AppColor.Background.primary.ignoresSafeArea()
-            VStack(spacing: 24) {
-                Text("Onboarding")
-                    .font(AppFont.headline)
-                    .foregroundStyle(AppColor.Label.primary)
-                Button("Get Started") {
-                    onComplete()
-                }
-                .font(AppFont.title)
-                .foregroundStyle(AppColor.Fill.accent)
-            }
-        }
-    }
-}
-
 // MARK: - Search
 
 struct SearchView: View {
@@ -53,12 +31,21 @@ struct NotificationsView: View {
 // MARK: - Settings
 
 struct SettingsView: View {
+    @AppStorage("showOnboarding") private var showOnboarding = true
+
     var body: some View {
         ZStack {
             AppColor.Background.primary.ignoresSafeArea()
-            Text("SettingsView")
-                .font(AppFont.title)
-                .foregroundStyle(AppColor.Label.primary)
+
+            List {
+                Section("Debug") {
+                    Button("Replay Onboarding") {
+                        showOnboarding = true
+                    }
+                    .foregroundStyle(AppColor.Fill.accent)
+                }
+            }
+            .scrollContentBackground(.hidden)
         }
         .navigationTitle("Settings")
     }

@@ -40,6 +40,7 @@ struct BracketMatchupView: View {
             headline: post.headline,
             breed: post.breed,
             location: post.location,
+            author: post.author,
             style: post.style,
             palette: post.palette,
             forceSquare: false,

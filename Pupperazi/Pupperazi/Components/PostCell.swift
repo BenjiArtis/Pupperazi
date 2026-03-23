@@ -9,6 +9,7 @@ struct PostCell<ImageOverlay: View>: View {
     let headline: String
     let breed: String
     let location: String
+    let author: String
     let style: ArticleStyle
     let palette: StylePalette
     var forceSquare: Bool = true
@@ -63,17 +64,21 @@ struct PostCell<ImageOverlay: View>: View {
 
             // Headline band
             if style.headlineBand {
-                HStack {
+                VStack(alignment: .leading, spacing: 0) {
                     Text(headline.uppercased())
                         .font(style.headlineFont)
                         .foregroundStyle(palette.headline)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
 
-                    Spacer()
+                    if !author.isEmpty {
+                        Text("Papped by \(author)")
+                            .font(AppFont.caption.bold())
+                            .foregroundStyle(palette.headline)
+                    }
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(EdgeInsets(top: 0, leading: 12, bottom: 8, trailing: 12))
                 .background(palette.background)
             }
         }
@@ -100,6 +105,7 @@ extension PostCell where ImageOverlay == EmptyView {
         headline: String,
         breed: String,
         location: String,
+        author: String = "",
         style: ArticleStyle,
         palette: StylePalette,
         forceSquare: Bool = true,
@@ -109,6 +115,7 @@ extension PostCell where ImageOverlay == EmptyView {
         self.headline = headline
         self.breed = breed
         self.location = location
+        self.author = author
         self.style = style
         self.palette = palette
         self.forceSquare = forceSquare
