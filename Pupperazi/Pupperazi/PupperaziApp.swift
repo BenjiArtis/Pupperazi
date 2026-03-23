@@ -10,6 +10,9 @@ import SwiftData
 
 @main
 struct PupperaziApp: App {
+    init() {
+        AppFont.registerFonts()
+    }
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,7 +28,7 @@ struct PupperaziApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppNavigation()
         }
         .modelContainer(sharedModelContainer)
     }

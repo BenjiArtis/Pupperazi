@@ -1,0 +1,84 @@
+import SwiftUI
+
+/// A single post in the feed.
+struct Post: Identifiable, Hashable {
+    let id: String
+    let imageName: String         // Asset catalogue image or system placeholder
+    let headline: String
+    let breed: String
+    let location: String
+    let style: ArticleStyle
+    let palette: StylePalette
+    var boopCount: Int
+    var isBooped: Bool
+    var commentCount: Int
+    var treats: [Treat]
+
+    static func == (lhs: Post, rhs: Post) -> Bool { lhs.id == rhs.id }
+    func hash(into hasher: inout Hasher) { hasher.combine(id) }
+}
+
+// MARK: - Sample Data
+
+extension Post {
+    static let samples: [Post] = [
+        Post(
+            id: "1",
+            imageName: "sample_dog_1",
+            headline: "Good boy poses with a devastating smolder",
+            breed: "Labrador",
+            location: "London, UK",
+            style: .tabloid,
+            palette: ArticleStyle.tabloid.palettes[0],
+            boopCount: 42,
+            isBooped: false,
+            commentCount: 32,
+            treats: [Treat(id: "pat", emoji: "🤚", count: 5)]
+        ),
+        Post(
+            id: "2",
+            imageName: "sample_dog_2",
+            headline: "Late night zoomies in the park",
+            breed: "Corgi",
+            location: "Tokyo, JP",
+            style: .poster,
+            palette: ArticleStyle.poster.palettes[0],
+            boopCount: 128,
+            isBooped: true,
+            commentCount: 64,
+            treats: [
+                Treat(id: "bone", emoji: "🦴", count: 12),
+                Treat(id: "love", emoji: "❤️", count: 8),
+            ]
+        ),
+        Post(
+            id: "3",
+            imageName: "sample_dog_3",
+            headline: "Sunday snooze on the sofa",
+            breed: "Pug",
+            location: "NYC, US",
+            style: .tabloid,
+            palette: ArticleStyle.tabloid.palettes[2],
+            boopCount: 7,
+            isBooped: false,
+            commentCount: 3,
+            treats: []
+        ),
+        Post(
+            id: "4",
+            imageName: "sample_dog_4",
+            headline: "First snow day and absolutely losing it",
+            breed: "Husky",
+            location: "Oslo, NO",
+            style: .tabloid,
+            palette: ArticleStyle.tabloid.palettes[3],
+            boopCount: 256,
+            isBooped: false,
+            commentCount: 89,
+            treats: [
+                Treat(id: "pat", emoji: "🤚", count: 22),
+                Treat(id: "ball", emoji: "🎾", count: 4),
+            ]
+        ),
+    ]
+}
