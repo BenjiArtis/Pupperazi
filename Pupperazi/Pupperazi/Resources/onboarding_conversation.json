@@ -110,7 +110,8 @@
         "Let's keep it classy now..."
       ],
       "action": {
-        "type": "photoPicker"
+        "type": "photoPicker",
+        "permissionType": "photoLibrary"
       },
       "userResponse": {
         "type": "image",

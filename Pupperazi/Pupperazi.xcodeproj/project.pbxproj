@@ -255,6 +255,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Pupperazzi needs camera access to take photos of dogs.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Pupperazzi needs your location to tag where you papped each dog.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Pupperazzi needs photo library access to save and select photos.";
 				INFOPLIST_KEY_UIAppFonts = "chunko-bold-demo.regular.ttf";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -302,6 +303,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Pupperazzi needs camera access to take photos of dogs.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Pupperazzi needs your location to tag where you papped each dog.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Pupperazzi needs photo library access to save and select photos.";
 				INFOPLIST_KEY_UIAppFonts = "chunko-bold-demo.regular.ttf";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
